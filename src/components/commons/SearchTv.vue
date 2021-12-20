@@ -3,7 +3,7 @@
         <h3>serie tv</h3>
         <div class="container-80">
             <ul>
-                <li v-for='(show, index) in shows' :key="index"><img :src="`http://image.tmdb.org/t/p/w300/${show.backdrop_path}`" alt="Immagine non disponibile">{{show.name}},{{show.original_title}},Voto:{{show.vote_average}} </li>
+                <li v-for='(show, index) in shows' :key="index"><img :src="`http://image.tmdb.org/t/p/w300/${show.backdrop_path}`" alt="Immagine non disponibile">{{show.name}},{{show.original_title}},Voto:{{show.vote_average}}<span><img :src="`https://flagcdn.com/16x12/${show.original_language}.png`"></span> </li>
             </ul>
         </div>
     </div>
@@ -38,6 +38,12 @@ methods:{
             li{
                 img{
                     width: 100%;
+                }
+                span{
+                    img{
+                        width: 16px;
+                        height: 12px;
+                    }
                 }
             }
         }

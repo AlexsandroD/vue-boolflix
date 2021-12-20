@@ -3,7 +3,7 @@
             <h3>Films</h3>
             <div class="">
                 <ul>
-                    <li v-for='(film, index) in filmsInput' :key="index"><img :src="`http://image.tmdb.org/t/p/w200/${film.backdrop_path}`" alt="Poster Image">{{film.title}},{{film.original_title}},Voto:{{film.vote_average}} </li>
+                    <li v-for='(film, index) in filmsInput' :key="index"><img :src="`http://image.tmdb.org/t/p/w200/${film.backdrop_path}`" alt="Poster Image">{{film.title}},{{film.original_title}},Voto:{{film.vote_average}} <span><img :src="`https://flagcdn.com/16x12/${film.original_language}.png`"></span></li>
                 </ul>
             </div>
     </div>
@@ -41,6 +41,12 @@ data(){
                     }
                     img{
                         width: 100%;
+                    }
+                    span{
+                        img{
+                            width: 16px;
+                            height: 12px;
+                        }
                     }
             }
             }
