@@ -10,9 +10,11 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "country-flag-icons": "^1.4.19",
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
