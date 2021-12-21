@@ -3,7 +3,7 @@
         <!-- <h3>serie tv</h3> -->
         <div class="container-70">
             <ul>
-                <li v-for='(show, index) in shows' :key="index"><img :src="`${getImg(show.backdrop_path)}`" alt="Immagine non disponibile">
+                <li v-for='(show, index) in shows' :key="index"><img :src="`${getImg(show.poster_path)}`" alt="Immagine non disponibile">
                 <div class="text">
                     <h4>Titolo:{{show.name}}</h4>
                     <p>Titolo:Originale:{{show.original_name}}</p>
@@ -33,7 +33,6 @@ props:{
        star(number){
         number = number / 2
         number = Math.ceil(number)
-        console.log(number)
         switch(number) {
         case 0:
             number == 0
