@@ -5,9 +5,10 @@
             <ul>
                 <li v-for='(show, index) in shows' :key="index"><img :src="`${getImg(show.backdrop_path)}`" alt="Immagine non disponibile">
                 <div class="text">
-                    <h5>{{show.name}}</h5>
-                    <p>{{show.original_title}}</p>
-                    <div>{{star(show.vote_average)}}</div>
+                    <h4>Titolo:{{show.name}}</h4>
+                    <p>Titolo:Originale:{{show.original_name}}</p>
+                    <p>Trama:{{show.overview}}</p>
+                    <div>Voto:<span>{{star(show.vote_average)}}</span></div>
                     <span><img :src="`https://flagcdn.com/16x12/${getFlag(show.original_language)}.png`"></span> 
                 </div>
                 </li>

@@ -4,13 +4,16 @@
     <div class="container-70">
       <ul>
         <li v-for='(film, index) in filmsInput' :key="index">
-            <img :src="`${getImg(film.backdrop_path)}`" alt="Immagine non disponibile">
-            <div class="text">
-                <h4>{{film.name}}</h4>
-                <p>{{film.original_title}}</p>
-                <div>{{star(film.vote_average)}}</div> 
-                <span><img :src="`https://flagcdn.com/16x12/${getFlag(film.original_language)}.png`">
-                </span> 
+            <div class="container-li">
+                <img :src="`${getImg(film.backdrop_path)}`" alt="Immagine non disponibile">
+                <div class="text">
+                    <h4>Titolo: {{film.title}}</h4>
+                    <p>Titolo originale:{{film.original_title}}</p>
+                    <p>Trama:{{film.overview}}</p>
+                    <div>Voto:<span>{{star(film.vote_average)}}</span></div> 
+                    <span><img :src="`https://flagcdn.com/16x12/${getFlag(film.original_language)}.png`">
+                    </span> 
+            </div>
             </div>
         </li>
       </ul>
