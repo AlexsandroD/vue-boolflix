@@ -3,11 +3,10 @@
         <h3>serie tv</h3>
         <div class="container-80">
             <ul>
-                <li v-for='(show, index) in shows' :key="index"><img :src="`${source}${getImg(show[index].backdrop_path)}`" alt="Immagine non disponibile">{{show.name}},{{show.original_title}},Voto:{{show.vote_average}}<span><img :src="`https://flagcdn.com/16x12/${getFlag(show.original_language)}.png`"></span> </li>
+                <li v-for='(show, index) in shows' :key="index"><img :src="`${getImg(show.backdrop_path)}`" alt="Immagine non disponibile">{{show.name}},{{show.original_title}},Voto:{{show.vote_average}}<span><img :src="`https://flagcdn.com/16x12/${getFlag(show.original_language)}.png`"></span> </li>
             </ul>
         </div>
     </div>
-    <!-- <span><img :src="`https://flagcdn.com/16x12/${show.original_language}.png `"></span>  -->
 </template>
 
 <script>
@@ -15,7 +14,7 @@ export default {
 name:"SearchTV",
 data(){
     return{
-         source:'http://image.tmdb.org/t/p/w300/'
+        //  source:'http://image.tmdb.org/t/p/w300/'
     }
 },
 props:{
@@ -24,11 +23,10 @@ props:{
   methods: {
     getImg(lang){
         if(lang == null){
-           this.source = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1j5dT8vlJwX_nr02NYSRfsr_pH4fyaxIqFw&usqp=CAU';
-           lang = ''
+          lang = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1j5dT8vlJwX_nr02NYSRfsr_pH4fyaxIqFw&usqp=CAU';
+        }else{
+            lang = 'http://image.tmdb.org/t/p/w300/' + lang
         }
-        console.log(lang)
-    	return lang
     },
     getFlag(lang) {
       if (lang == "en") {

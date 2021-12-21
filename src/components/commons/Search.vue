@@ -20,7 +20,6 @@
       </ul>
     </div>
   </div>
-  <!-- <span><img :src="`https://flagcdn.com/1x1/${film.original_language}.png `"></span>  -->
 </template>
 
 <script>
