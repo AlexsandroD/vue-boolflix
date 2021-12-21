@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;700;900&family=Montserrat:wght@400;900&family=Roboto:wght@300;400;700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+    background-color: #181818;
+    font-family: 'Martel Sans', sans-serif;
+    overflow-x: hidden;
 }
 
 li{
@@ -17,3 +24,67 @@ a{
     width: 100%;
     margin: auto;
     text-align: center;}
+
+.search{
+    h3{
+        color: #DC1A28;
+        text-transform: uppercase;
+    }
+    .container-70{
+        width: 95%;
+        margin: 50px auto;
+        ul{
+            display: grid;
+            justify-content: center;
+            grid-template-columns:repeat(auto-fill, 230px);
+            column-gap:10px;
+            row-gap: 60px;
+            li{
+                position: relative;
+                border-radius: 5px;
+                &:hover .text{
+                    transform: scale(1.3);
+                    display: block;
+                    width: 100%;
+                    transition: 0.2s;
+                    z-index: 2;
+                    -webkit-box-shadow: 5px 5px 11px 3px rgba(0,0,0,0.41); 
+                    box-shadow: 5px 5px 11px 3px rgba(0,0,0,0.41);
+                }
+                &:hover img{
+                position: relative;
+                transform: scale(1.3,1.2);
+                transition: 0.2s;
+                z-index: 2;
+                -webkit-box-shadow: 5px 5px 11px 3px rgba(0,0,0,0.41); 
+                box-shadow: 5px 5px 11px 3px rgba(0,0,0,0.41);
+                }  
+                img{
+                    border-radius: 3px;
+                    width: 100%;
+                    aspect-ratio: 2;
+                    object-fit: cover;               
+                }
+                .text{
+                    h5{
+                        text-overflow: ellipsis; overflow: hidden; white-space: nowrap;
+
+                    }
+                    position: absolute;
+                    background-color: #181818;
+                    display: none;
+                    color: white;
+                    width: 0%;
+                    bottom:-75%;
+                    border-radius: 0px 0px 5px 5px;
+                }
+                span{
+                    img{
+                        width: 16px;
+                        height: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
