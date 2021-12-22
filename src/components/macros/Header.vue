@@ -8,8 +8,19 @@
         />
       </div>
       <form @submit.prevent="$emit('search', inputSearch)">
-        <button><i class="fas fa-search"></i></button>
-        <input type="text" v-model="inputSearch" />
+        <button @mouseenter="openBar()"><i class="fas fa-search"></i></button>
+        <input
+          type="text"
+          :class="searchIcon == true ? 'active-input' : ''"
+          v-model="inputSearch"
+        />
+        <div
+          @click="closeBar()"
+          class="close"
+          :class="closeIcon == true ? 'active-show' : ''"
+        >
+          <i class="fas fa-times"></i>
+        </div>
       </form>
     </div>
   </header>
@@ -21,35 +32,81 @@ export default {
   data() {
     return {
       inputSearch: "",
+      searchIcon: false,
+      closeIcon: false,
     };
+  },
+  methods: {
+    openBar() {
+      this.searchIcon = true;
+      this.closeIcon = true;
+    },
+    closeBar() {
+      this.searchIcon = false;
+      this.closeIcon = false;
+      this.inputSearch = ''
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 header {
-  form{
+  display: flex;
+  align-items: center;
+  form {
     position: relative;
+    display: flex;
+    align-items: center;
+    input {
+      width: 0;
+      color: white;
+      background-color: #181818;
+      border: none;
+      transition: ease 0.6s;
+    }
+    button {
+      font-size: 15px;
+      color: white;
+      background-color: #181818;
+      box-shadow: none;
+      border: none;
+      margin-right: 10px;
+    }
+
+    .close {
+      display: none;
+      color: white;
+      font-size: 20px;
+
+    }
+    .active-input {
+      width: 300px;
+      border: 1px solid white;
+      height: 30px;
+      transition: ease 0.3s;
+    }
+    .active-show {
+      display: inline-block;
+      margin-left: 10px;
+    }
   }
   height: 60px;
   background-color: #181818;
-  .container-80{
+  .container-80 {
     width: 90%;
     margin: auto;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-content: center;
-    
-    .logo{
+
+    .logo {
       display: flex;
       width: 200px;
-      img{
+      img {
         width: 100%;
       }
-    }
-    form{
-      line-height: 60px;
     }
   }
 }
