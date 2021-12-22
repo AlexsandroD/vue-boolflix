@@ -5,10 +5,10 @@
       <ul>
         <li v-for='(film, index) in filmsInput' :key="index">
             <div class="container-li">
-                <img :src="`${getImg(film.poster_path)}`" alt="Immagine non disponibile">
+                <img :src="`${getImg(film.poster_path)}`" :alt="film.title + ' poster ' ">
                 <div class="text">
                     <h4>Titolo: {{film.title}}</h4>
-                    <p>Titolo originale:{{film.original_title}}</p>
+                    <p>Titolo originale:{{movieTitle(film.title,film.original_title)}}</p>
                     <p>Trama:{{film.overview}}</p>
                     <div>Voto:<span>{{star(film.vote_average)}}</span></div> 
                     <span><img :src="`https://flagcdn.com/16x12/${getFlag(film.original_language)}.png`">
@@ -34,6 +34,15 @@ export default {
     };
   },
   methods: {
+     movieTitle(n, y){
+        //  console.log(n,y);
+         if(y == n){
+             y = ''
+             n = ''
+             console.log(y,n);
+         }
+         return y
+    },
        star(number){
         number = number / 2
         number = Math.ceil(number)

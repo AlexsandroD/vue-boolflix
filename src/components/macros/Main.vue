@@ -17,6 +17,7 @@ export default {
   components: {
     Search,
     SearchTV,
+    
   },
   props: {
     films: Array,

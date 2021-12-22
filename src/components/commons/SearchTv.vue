@@ -6,7 +6,7 @@
                 <li v-for='(show, index) in shows' :key="index"><img :src="`${getImg(show.poster_path)}`" alt="Immagine non disponibile">
                 <div class="text">
                     <h4>Titolo:{{show.name}}</h4>
-                    <p>Titolo:Originale:{{show.original_name}}</p>
+                    <p>Titolo:Originale:{{seriesTitle(show.name,show.original_name)}}</p>
                     <p>Trama:{{show.overview}}</p>
                     <div>Voto:<span>{{star(show.vote_average)}}</span></div>
                     <span><img :src="`https://flagcdn.com/16x12/${getFlag(show.original_language)}.png`"></span> 
@@ -29,7 +29,15 @@ props:{
    shows:[],
 },
   methods: {
-
+       seriesTitle(n, y){
+        //  console.log(n,y);
+         if(y == n){
+             y = ''
+             n = ''
+             console.log(y,n);
+         }
+         return y
+       },
        star(number){
         number = number / 2
         number = Math.ceil(number)
