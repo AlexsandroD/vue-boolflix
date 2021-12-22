@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @search="searching" />
-    <Main :films="films" :shows="shows" />
+    <Main :films="films" :shows="shows" :genres="genres" />
   </div>
 </template>
 
@@ -20,8 +20,12 @@ export default {
       dataSearch: "",
       films: [],
       shows: [],
+      genres: [],
     };
   },
+
+  
+
   methods: {
     searching(payload) {
       this.dataSearch = payload;
@@ -63,7 +67,6 @@ export default {
           .then((response) => {
             console.log(response);
             this.shows = response.data.results;
-            console.log(this.flag);
           })
           .catch(function (error) {
             console.log(error);
@@ -73,6 +76,24 @@ export default {
       }
     },
   },
+
+  created(){
+    axios.get("https://api.themoviedb.org/3/genre/movie/list",{
+      params:{
+        api_key: "86b1172b207765fe60ddcff01203c51b",
+        language: "it-IT",
+      }
+    })
+    .then((response) => {
+      console.log(response)
+      this.genres = response.data.genres
+      console.log(this.genres)
+    })
+    .catch(function(error){
+      console.log(error)
+    })
+  }
+
 };
 </script>
 

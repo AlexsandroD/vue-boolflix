@@ -34,7 +34,6 @@ props:{
          if(y == n){
              y = ''
              n = ''
-             console.log(y,n);
          }
          return y
        },

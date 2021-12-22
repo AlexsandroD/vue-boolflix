@@ -13,7 +13,7 @@
                     <div>Voto:<span>{{star(film.vote_average)}}</span></div> 
                     <span><img :src="`https://flagcdn.com/16x12/${getFlag(film.original_language)}.png`">
                     </span> 
-            </div>
+                </div>
             </div>
         </li>
       </ul>
@@ -39,7 +39,6 @@ export default {
          if(y == n){
              y = ''
              n = ''
-             console.log(y,n);
          }
          return y
     },

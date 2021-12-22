@@ -54,6 +54,7 @@ export default {
 header {
   display: flex;
   align-items: center;
+  padding-top:20px;
   form {
     position: relative;
     display: flex;
@@ -66,7 +67,7 @@ header {
       transition: ease 0.6s;
     }
     button {
-      font-size: 15px;
+      font-size: 20px;
       color: white;
       background-color: #181818;
       box-shadow: none;
