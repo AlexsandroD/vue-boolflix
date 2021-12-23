@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header @search="searching" />
+    <Header @search="searching" :genres="genres"/>
     <Main :films="films" :shows="shows" :genres="genres" />
   </div>
 </template>

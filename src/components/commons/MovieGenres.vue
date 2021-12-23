@@ -2,11 +2,11 @@
    <div class="search">
     <!-- <h3>Films</h3> -->
     <div class="container-80">
-      <ul>
-        <li  v-for="(g, index) in genres" :key="index">
+      <select v-model="selectGenre" @change="$emit('selection',selectGenre)">
+        <option  v-for="(g, index) in genres" :key="index">
           <h1>{{g.name}}</h1>
-        </li>
-      </ul>
+        </option>
+      </select>
     </div>
   </div>
 </template>
@@ -14,6 +14,11 @@
 <script>
 export default {
  name: 'MovieGenres',
+  data(){
+    return{
+      selectGenre:""
+    }
+  },
  props: {
      genres:Array
  }

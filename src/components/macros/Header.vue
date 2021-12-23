@@ -7,6 +7,7 @@
           alt=""
         />
       </div>
+      <MovieGenres @select="selectGenre" :genres="genres"/>
       <form @submit.prevent="$emit('search', inputSearch)">
         <button @mouseenter="openBar()"><i class="fas fa-search"></i></button>
         <input
@@ -17,8 +18,7 @@
         <div
           @click="closeBar()"
           class="close"
-          :class="closeIcon == true ? 'active-show' : ''"
-        >
+          :class="closeIcon == true ? 'active-show' : ''">
           <i class="fas fa-times"></i>
         </div>
       </form>
@@ -27,16 +27,25 @@
 </template>
 
 <script>
+import MovieGenres from"../commons/MovieGenres.vue";
 export default {
   name: "Header",
+  components:{
+    MovieGenres,
+  },
   data() {
     return {
       inputSearch: "",
+      selectGenres:"",
       searchIcon: false,
-      closeIcon: false,
+      closeIcon: false,      
     };
   },
   methods: {
+    selectGenre(payload){
+      this.selectGenre = payload
+      console.log(payload)
+    },
     openBar() {
       this.searchIcon = true;
       this.closeIcon = true;
@@ -47,6 +56,9 @@ export default {
       this.inputSearch = ''
     },
   },
+  props: {
+     genres:Array
+  }
 };
 </script>
 
