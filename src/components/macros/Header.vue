@@ -8,7 +8,7 @@
         />
       </div>
       <MovieGenres @select="selectGenre" :genres="genres"/>
-      <form @submit.prevent="$emit('search', inputSearch)">
+      <form @submit.prevent="searching()">
         <button @mouseenter="openBar()"><i class="fas fa-search"></i></button>
         <input
           type="text"
@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+import dataShared from '../../share/dataShared';
 import MovieGenres from"../commons/MovieGenres.vue";
 export default {
   name: "Header",
@@ -38,7 +40,8 @@ export default {
       inputSearch: "",
       selectGenres:"",
       searchIcon: false,
-      closeIcon: false,      
+      closeIcon: false,  
+      dataShared,    
     };
   },
   methods: {
@@ -54,6 +57,53 @@ export default {
       this.searchIcon = false;
       this.closeIcon = false;
       this.inputSearch = ''
+    },
+     searching() {
+      this.getMovieApi();
+      this.getTvshow();
+    },
+    getMovieApi() {
+      if (this.inputSearch != "") {
+        axios
+          .get("https://api.themoviedb.org/3/search/movie", {
+            params: {
+              api_key: "86b1172b207765fe60ddcff01203c51b",
+              query: this.inputSearch.toUpperCase(),
+              language: "it-IT",
+            },
+          })
+          .then((response) => {
+            console.log(response);
+            this.dataShared.films = response.data.results;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } else {
+        alert("please write a title");
+      }
+    },
+
+    getTvshow() {
+      if (this.inputSearch != "") {
+        axios
+          .get("https://api.themoviedb.org/3/search/tv", {
+            params: {
+              api_key: "86b1172b207765fe60ddcff01203c51b",
+              query: this.inputSearch,
+              language: "it-IT",
+            },
+          })
+          .then((response) => {
+            console.log(response);
+            this.dataShared.shows = response.data.results;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } else {
+        alert("please write a title");
+      }
     },
   },
   props: {

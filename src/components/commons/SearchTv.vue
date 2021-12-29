@@ -3,12 +3,12 @@
         <!-- <h3>serie tv</h3> -->
         <div class="container-70">
             <ul>
-                <li v-for='(show, index) in shows' :key="index"><img :src="`${getImg(show.poster_path)}`" alt="Immagine non disponibile">
+                <li v-for='(show, index) in dataShared.shows' :key="index"><img :src="`${getImg(show.poster_path)}`" alt="Immagine non disponibile">
                 <div class="text">
                     <h4>Titolo:{{show.name}}</h4>
                     <p v-if="show.title != show.original_title" >Titolo originale:{{show.original_title}}</p>
                     <p v-else></p>
-                    <p>Trama:{{show.overview}}</p>
+                    <p class="plot">Trama:{{show.overview}}</p>
                     <div>Voto:<span>{{star(show.vote_average)}}</span></div>
                     <span><img :src="`https://flagcdn.com/16x12/${getFlag(show.original_language)}.png`"></span> 
                 </div>
@@ -19,15 +19,13 @@
 </template>
 
 <script>
+import dataShared from "../../share/dataShared";
 export default {
 name:"SearchTV",
 data(){
     return{
-        //  source:'http://image.tmdb.org/t/p/w300/'
+        dataShared,
     }
-},
-props:{
-   shows:[],
 },
   methods: {
        star(number){

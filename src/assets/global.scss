@@ -73,6 +73,13 @@ a{
                     }
                 }
                 .text{
+                    .plot{
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 5;
+                        -webkit-box-orient: vertical;
+                    }
                     h4,p{
                         text-overflow: ellipsis; overflow: hidden; white-space:wrap;
                     }

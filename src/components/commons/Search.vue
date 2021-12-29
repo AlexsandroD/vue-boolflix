@@ -3,14 +3,14 @@
     <!-- <h3>Films</h3> -->
     <div class="container-70">
       <ul>
-        <li v-for='(film, index) in filmsInput' :key="index">
+        <li v-for='(film, index) in dataShared.films' :key="index"> 
             <div class="container-li">
                 <img :src="`${getImg(film.poster_path)}`" :alt="film.title + ' poster ' ">
                 <div class="text">
                     <h4>Titolo: {{film.title}}</h4>
                     <p v-if="film.title != film.original_title" >Titolo originale:{{film.original_title}}</p>
                     <p v-else></p>
-                    <p>Trama:{{film.overview}}</p>
+                    <p class="plot">Trama:{{film.overview}}</p>
                     <div>Voto:<span>{{star(film.vote_average)}}</span></div> 
                     <span><img :src="`https://flagcdn.com/16x12/${getFlag(film.original_language)}.png`">
                     </span> 
@@ -23,17 +23,16 @@
 </template>
 
 <script>
+import dataShared from "../../share/dataShared";
 export default {
   name: "Search",
-  props: {
-    filmsInput: Array,
+
+  data(){
+    return{
+      dataShared,
+    }
   },
-  data() {
-    return {
-      voteFilm: 0,
-      
-    };
-  },
+
   methods: {
        star(number){
         number = number / 2
@@ -74,9 +73,13 @@ export default {
         }
         return lang
     },
-    getFlag(lang) {
+   getFlag(lang) {
       if (lang == "en") {
         return "gb";
+      }else if(lang == 'ja') {
+          return 'jp'
+      }else if(lang == 'ja') {
+          return 'jp'
       }
       return lang;
     },

@@ -2,10 +2,10 @@
 <main>
   <div class="container-100">
     <div class="container-80">
-      <Search :filmsInput="films" />
+      <Search/>
     </div>
     <div class="container-80">
-      <SearchTV :shows="shows" />
+      <SearchTV/>
     </div>
      <div class="container-80">
     
@@ -23,11 +23,6 @@ export default {
     Search,
     SearchTV,
   },
-  props: {
-    films: Array,
-    shows: Array,
-  },
-  methods: {},
 };
 </script>
 
