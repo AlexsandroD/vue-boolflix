@@ -7,7 +7,7 @@
           alt=""
         />
       </div>
-      <MovieGenres @select="selectGenre" :genres="genres"/>
+      <MovieGenres/>
       <form @submit.prevent="searching()">
         <button @mouseenter="openBar()"><i class="fas fa-search"></i></button>
         <input
@@ -15,10 +15,11 @@
           :class="searchIcon == true ? 'active-input' : ''"
           v-model="inputSearch"
         />
-        <div
-          @click="closeBar()"
-          class="close"
-          :class="closeIcon == true ? 'active-show' : ''">
+      <div
+        @click="closeBar()"
+        class="close"
+        :class="closeIcon == true ? 'active-show' : ''"
+      >
           <i class="fas fa-times"></i>
         </div>
       </form>
@@ -27,28 +28,24 @@
 </template>
 
 <script>
-import axios from 'axios';
-import dataShared from '../../share/dataShared';
-import MovieGenres from"../commons/MovieGenres.vue";
+import axios from "axios";
+import dataShared from "../../share/dataShared";
+import MovieGenres from "../commons/MovieGenres.vue";
 export default {
   name: "Header",
-  components:{
+  components: {
     MovieGenres,
   },
   data() {
     return {
       inputSearch: "",
-      selectGenres:"",
+      selectGenres: "",
       searchIcon: false,
-      closeIcon: false,  
-      dataShared,    
+      closeIcon: false,
+      dataShared,
     };
   },
   methods: {
-    selectGenre(payload){
-      this.selectGenre = payload
-      console.log(payload)
-    },
     openBar() {
       this.searchIcon = true;
       this.closeIcon = true;
@@ -56,9 +53,9 @@ export default {
     closeBar() {
       this.searchIcon = false;
       this.closeIcon = false;
-      this.inputSearch = ''
+      this.inputSearch = "";
     },
-     searching() {
+    searching() {
       this.getMovieApi();
       this.getTvshow();
     },
@@ -106,9 +103,6 @@ export default {
       }
     },
   },
-  props: {
-     genres:Array
-  }
 };
 </script>
 
@@ -116,7 +110,7 @@ export default {
 header {
   display: flex;
   align-items: center;
-  padding-top:20px;
+  padding-top: 20px;
   form {
     position: relative;
     display: flex;
@@ -127,6 +121,7 @@ header {
       background-color: #181818;
       border: none;
       transition: ease 0.6s;
+      padding: 3px;
     }
     button {
       font-size: 20px;
@@ -141,7 +136,6 @@ header {
       display: none;
       color: white;
       font-size: 20px;
-
     }
     .active-input {
       width: 300px;
